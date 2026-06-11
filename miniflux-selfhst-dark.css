@@ -3,7 +3,7 @@
    For Miniflux v2 (https://github.com/miniflux/v2)
 
    Bright letters on a near-black background with blue accents, modeled on
-   the look of selfh.st. Page gutters are fixed at 20px left/right.
+   the look of selfh.st. Page gutters are fixed at 20px left/right (on body).
 
    How to use:
    1. Miniflux → Settings → Theme: "Dark - Sans serif" (recommended base)
@@ -13,135 +13,151 @@
 :root {
     color-scheme: dark;
 
+    /* Palette */
+    --sh-bg: #1a1a1a;        /* page background */
+    --sh-card: #212121;      /* cards, panels, inputs */
+    --sh-blue: #4c60d0;      /* accent: links, buttons, highlights */
+    --sh-blue-dark: #4152b1; /* accent darkened, for pressed/focused buttons */
+    --sh-text: #e6e6e6;      /* primary text */
+    --sh-muted: #6e7281;     /* secondary text */
+    --sh-icon: #676767;      /* icons */
+    --sh-border: #2e2e2e;    /* hairlines and borders */
+
+    /* To use a locally-installed font (e.g. a Nerd Font), list it first:
+       --font-family: "JetBrainsMono Nerd Font Mono", ui-monospace, monospace; */
     --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --entry-content-font-family: var(--font-family);
     --entry-content-quote-font-family: var(--font-family);
     --entry-content-font-weight: 400;
 
     /* Base */
-    --body-color: #f2f2f2;
-    --body-background: #0e0e0e;
-    --hr-border-color: #262626;
-    --title-color: #ffffff;
+    --body-color: var(--sh-text);
+    --body-background: var(--sh-bg);
+    --hr-border-color: var(--sh-border);
+    --title-color: var(--sh-text);
 
     /* Links: bright by default, blue on hover/focus */
-    --link-color: #f2f2f2;
-    --link-focus-color: #60a5fa;
-    --link-hover-color: #60a5fa;
-    --link-visited-color: #a5b4fc;
+    --link-color: var(--sh-text);
+    --link-focus-color: var(--sh-blue);
+    --link-hover-color: var(--sh-blue);
+    --link-visited-color: var(--sh-text);
 
-    /* Header / main menu */
-    --header-list-border-color: #1f1f1f;
-    --header-link-color: #d4d4d4;
-    --header-link-focus-color: #60a5fa;
-    --header-link-hover-color: #60a5fa;
-    --header-active-link-color: #ffffff;
+    /* Header / main menu: muted links, bright active item */
+    --header-list-border-color: var(--sh-border);
+    --header-link-color: var(--sh-muted);
+    --header-link-focus-color: var(--sh-blue);
+    --header-link-hover-color: var(--sh-blue);
+    --header-active-link-color: var(--sh-text);
 
-    --page-header-title-color: #ffffff;
-    --page-header-title-border-color: #1f1f1f;
+    --page-header-title-color: var(--sh-text);
+    --page-header-title-border-color: var(--sh-border);
 
-    --logo-color: #ffffff;
-    --logo-hover-color-span: #ffffff;
+    --logo-color: var(--sh-text);
+    --logo-hover-color-span: var(--sh-text);
 
     /* Tables */
-    --table-border-color: #262626;
-    --table-th-background: #161616;
-    --table-th-color: #9ca3af;
-    --table-tr-hover-background-color: #161616;
-    --table-tr-hover-color: #f2f2f2;
+    --table-border-color: var(--sh-border);
+    --table-th-background: var(--sh-card);
+    --table-th-color: var(--sh-muted);
+    --table-tr-hover-background-color: var(--sh-card);
+    --table-tr-hover-color: var(--sh-text);
 
     /* Buttons */
-    --button-primary-border-color: #3b82f6;
-    --button-primary-background: #3b82f6;
-    --button-primary-color: #ffffff;
-    --button-primary-focus-border-color: #2563eb;
-    --button-primary-focus-background: #2563eb;
+    --button-primary-border-color: var(--sh-blue);
+    --button-primary-background: var(--sh-blue);
+    --button-primary-color: var(--sh-text);
+    --button-primary-focus-border-color: var(--sh-blue-dark);
+    --button-primary-focus-background: var(--sh-blue-dark);
 
     /* Forms */
-    --input-border: 1px solid #2a2a2a;
-    --input-background: #1a1a1a;
-    --input-color: #f2f2f2;
-    --input-placeholder-color: #6b7280;
-    --input-focus-color: #ffffff;
-    --input-focus-border-color: rgba(59, 130, 246, 0.8);
-    --input-focus-box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+    --input-border: 1px solid var(--sh-border);
+    --input-background: var(--sh-card);
+    --input-color: var(--sh-text);
+    --input-placeholder-color: var(--sh-muted);
+    --input-focus-color: var(--sh-text);
+    --input-focus-border-color: rgba(76, 96, 208, 0.8);
+    --input-focus-box-shadow: 0 0 0 3px rgba(76, 96, 208, 0.3);
 
-    /* Alerts */
-    --alert-color: #e5e5e5;
-    --alert-background-color: #161616;
-    --alert-border-color: #2a2a2a;
+    /* Alerts (info tinted from the accent blue) */
+    --alert-color: var(--sh-text);
+    --alert-background-color: var(--sh-card);
+    --alert-border-color: var(--sh-border);
     --alert-success-color: #86efac;
     --alert-success-background-color: #0c1f13;
     --alert-success-border-color: #14532d;
     --alert-error-color: #fca5a5;
     --alert-error-background-color: #251111;
     --alert-error-border-color: #7f1d1d;
-    --alert-info-color: #93c5fd;
-    --alert-info-background-color: #0f1a2e;
-    --alert-info-border-color: #1e3a8a;
+    --alert-info-color: #99a3db;
+    --alert-info-background-color: #24283e;
+    --alert-info-border-color: #2e3663;
 
     /* Panels and misc chrome */
-    --panel-background: #161616;
-    --panel-border-color: #262626;
-    --panel-color: #d4d4d4;
-    --keyboard-shortcuts-li-color: #9ca3af;
-    --counter-color: #9ca3af;
+    --panel-background: var(--sh-card);
+    --panel-border-color: var(--sh-border);
+    --panel-color: var(--sh-text);
+    --keyboard-shortcuts-li-color: var(--sh-muted);
+    --counter-color: var(--sh-muted);
 
-    --pagination-link-color: #d4d4d4;
-    --pagination-border-color: #1f1f1f;
+    --pagination-link-color: var(--sh-text);
+    --pagination-border-color: var(--sh-border);
 
-    /* Category labels */
-    --category-color: #d4d4d4;
-    --category-background-color: #1a1a1a;
-    --category-border-color: #2a2a2a;
-    --category-link-color: #9ca3af;
-    --category-link-hover-color: #60a5fa;
+    /* Category labels: outline pills */
+    --category-color: var(--sh-text);
+    --category-background-color: transparent;
+    --category-border-color: var(--sh-border);
+    --category-link-color: var(--sh-muted);
+    --category-link-hover-color: var(--sh-blue);
 
     /* Article list */
-    --item-border-color: #232323;
+    --item-border-color: var(--sh-border);
     --item-padding: 12px 14px;
     --item-title-link-font-weight: 600;
-    --item-status-read-title-link-color: #6b7280;
-    --item-status-read-title-focus-color: #60a5fa;
-    --item-meta-focus-color: #9ca3af;
-    --item-meta-li-color: #4b5563;
+    --item-status-read-title-link-color: var(--sh-muted);
+    --item-status-read-title-focus-color: var(--sh-blue);
+    --item-meta-focus-color: var(--sh-muted);
+    --item-meta-li-color: var(--sh-muted);
     --current-item-border-width: 2px;
-    --current-item-border-color: #3b82f6;
-    --current-item-box-shadow: 0 0 8px rgba(59, 130, 246, 0.35);
+    --current-item-border-color: var(--sh-blue);
+    --current-item-box-shadow: 0 0 8px rgba(76, 96, 208, 0.35);
 
     /* Entry view */
-    --entry-header-border-color: #1f1f1f;
-    --entry-header-title-link-color: #ffffff;
-    --entry-content-color: #d4d4d4;
-    --entry-content-code-color: #f8fafc;
-    --entry-content-code-background: #1a1a1a;
-    --entry-content-code-border-color: #2e2e2e;
-    --entry-content-quote-color: #9ca3af;
-    --entry-content-abbr-border-color: #4b5563;
-    --entry-content-aside-border-color: #4b5563;
-    --entry-enclosure-border-color: #262626;
+    --entry-header-border-color: var(--sh-border);
+    --entry-header-title-link-color: var(--sh-text);
+    --entry-content-color: var(--sh-text);
+    --entry-content-code-color: var(--sh-text);
+    --entry-content-code-background: var(--sh-card);
+    --entry-content-code-border-color: var(--sh-border);
+    --entry-content-quote-color: var(--sh-muted);
+    --entry-content-abbr-border-color: var(--sh-muted);
+    --entry-content-aside-border-color: var(--sh-muted);
+    --entry-enclosure-border-color: var(--sh-border);
 
-    /* Feed/category state highlights */
+    /* Feed/category state highlights (unread tinted from the accent blue) */
     --parsing-error-color: #fca5a5;
     --feed-parsing-error-background-color: #251111;
     --feed-parsing-error-border-style: solid;
     --feed-parsing-error-border-color: #7f1d1d;
-    --feed-has-unread-background-color: #11192b;
+    --feed-has-unread-background-color: #222535;
     --feed-has-unread-border-style: solid;
-    --feed-has-unread-border-color: #1e3a5f;
-    --category-has-unread-background-color: #11192b;
+    --feed-has-unread-border-color: #2c335a;
+    --category-has-unread-background-color: #222535;
     --category-has-unread-border-style: solid;
-    --category-has-unread-border-color: #1e3a5f;
+    --category-has-unread-border-color: #2c335a;
 }
 
-/* Page gutters: 20px left/right */
-main,
-.header {
+/* Page gutters: 20px left/right on the body, none on main
+   (also drops Miniflux's stock offsets so everything aligns) */
+body {
     padding-left: 20px;
     padding-right: 20px;
 }
 
-/* Drop the stock inner offsets so everything aligns on the 20px gutter */
+main {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .page-header,
 .entry header {
     padding-inline: 0;
@@ -151,23 +167,32 @@ main,
     border-bottom-style: solid;
 }
 
-/* Logo: white wordmark with the blue dot, selfh.st style */
+/* Icons: gray at rest, accent on hover/focus */
+svg.icon {
+    color: var(--sh-icon);
+}
+
+:is(a, button):is(:hover, :focus) svg.icon {
+    color: inherit;
+}
+
+/* Logo: wordmark and blue dot swap colors on hover */
 .logo a span,
 .logo a:hover {
-    color: #3b82f6;
+    color: var(--sh-blue);
 }
 
 .logo a:hover span {
-    color: #60a5fa;
+    color: var(--sh-text);
 }
 
 .header li :is(a, .logout-button):hover {
-    color: #60a5fa;
+    color: var(--sh-blue);
 }
 
 /* Article list: solid rounded cards instead of dotted outlines */
 .item {
-    background-color: #151515;
+    background-color: var(--sh-card);
     border-style: solid;
     border-radius: 12px;
     margin-bottom: 12px;
@@ -178,14 +203,17 @@ main,
     padding: 11px 13px;
 }
 
-.item-meta a,
+.item-meta a {
+    color: var(--sh-muted);
+}
+
 .item-meta-icons li :is(a, button) {
-    color: #9ca3af;
+    color: var(--sh-icon);
 }
 
 .item-meta :is(a:is(:focus, :hover), button:is(:focus, :hover)),
 .item-meta-icons li :is(a, button):is(:focus, :hover) {
-    color: #60a5fa;
+    color: var(--sh-blue);
 }
 
 /* Buttons: pill-shaped like the selfh.st "Subscribe" button */
@@ -205,9 +233,9 @@ main,
 }
 
 .button:disabled {
-    color: #525252;
-    background: #1a1a1a;
-    border-color: #2a2a2a;
+    color: var(--sh-icon);
+    background: var(--sh-card);
+    border-color: var(--sh-border);
 }
 
 /* Forms */
@@ -222,17 +250,17 @@ textarea {
 }
 
 fieldset {
-    border: 1px solid #262626;
+    border: 1px solid var(--sh-border);
     border-radius: 12px;
     padding: 14px;
 }
 
 .form-section {
-    border-left: 2px solid #262626;
+    border-left: 2px solid var(--sh-border);
 }
 
 .form-help {
-    color: #9ca3af;
+    color: var(--sh-muted);
 }
 
 /* Hover colors hardcoded for the light theme upstream */
@@ -240,47 +268,42 @@ fieldset {
 .page-header h1 a:focus,
 .entry header h1 a:hover,
 .entry header h1 a:focus {
-    color: #93c5fd;
+    color: var(--sh-blue);
 }
 
 .entry-meta,
 .entry-website a {
-    color: #9ca3af;
+    color: var(--sh-muted);
 }
 
 .entry-date {
-    color: #6b7280;
+    color: var(--sh-muted);
 }
 
 /* Blue accent for hyperlinks inside article content */
 .entry-content a {
-    color: #3b82f6;
-}
-
-.entry-content a:hover,
-.entry-content a:focus {
-    color: #60a5fa;
+    color: var(--sh-blue);
 }
 
 .entry-content figure img {
-    border-color: #262626;
+    border-color: var(--sh-border);
 }
 
 .entry-content figcaption {
-    color: #9ca3af;
+    color: var(--sh-muted);
 }
 
 .entry-content dt {
-    color: #e5e5e5;
+    color: var(--sh-text);
 }
 
 .entry-content dd {
-    color: #9ca3af;
-    border-left-color: #2e2e2e;
+    color: var(--sh-muted);
+    border-left-color: var(--sh-border);
 }
 
 .entry-content blockquote {
-    border-left-color: #3b82f6;
+    border-left-color: var(--sh-blue);
 }
 
 .entry-content pre {
@@ -294,7 +317,7 @@ fieldset {
 }
 
 .bookmarklet {
-    border-color: #2e2e2e;
+    border-color: var(--sh-border);
 }
 
 .confirm,
