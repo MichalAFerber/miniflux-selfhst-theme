@@ -2,6 +2,8 @@
 
 A dark theme (custom CSS) for [Miniflux v2](https://github.com/miniflux/v2), based loosely on the current design of the [selfh.st](https://selfh.st) website: bright letters on a near-black background, blue accents, rounded cards, pill buttons, and 20px left/right page gutters — all set in [Iosevka](https://typeof.net/Iosevka/).
 
+![Miniflux feeds page with the selfh.st dark theme applied](screenshot.png)
+
 ## Usage
 
 1. In Miniflux, go to **Settings** and set **Theme** to *Dark - Sans serif* (recommended base).
@@ -72,6 +74,18 @@ cdn.jsdelivr.net
       font-style: normal;
   }
   ```
+
+## Credits
+
+The look is loosely modeled on [selfh.st](https://selfh.st), Ethan Sholly's self-hosted news site and newsletter:
+
+![The selfh.st website that inspired the theme](screenshot-selfh.st.png)
+
+- [Iosevka](https://typeof.net/Iosevka/) — the theme's typeface, by Renzhi Li (be5invis), SIL Open Font License 1.1
+- [Fontsource](https://fontsource.org/fonts/iosevka) and [jsDelivr](https://www.jsdelivr.com/) — the webfont package and the free CDN that serves it
+- [JetBrains Mono](https://www.jetbrains.com/lp/mono/) — by JetBrains, SIL Open Font License 1.1; used in the font-swap examples
+- [Nerd Fonts](https://www.nerdfonts.com/) — Ryan L McIntyre's icon-patched font builds, the locally-installed option
+- [Miniflux](https://miniflux.app/) — the minimalist feed reader this theme dresses up
 
 ## License
 
