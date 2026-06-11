@@ -28,3 +28,7 @@ A dark theme (custom CSS) for [Miniflux v2](https://github.com/miniflux/v2), bas
 | Hairlines / borders | `#1f1f1f` / `#262626` |
 
 Built against the Miniflux v2 stylesheets (`common.css` + `dark.css`) as of June 2026.
+
+## License
+
+[MIT](LICENSE)
