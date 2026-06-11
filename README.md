@@ -5,7 +5,7 @@ A dark theme (custom CSS) for [Miniflux v2](https://github.com/miniflux/v2), bas
 ## Usage
 
 1. In Miniflux, go to **Settings** and set **Theme** to *Dark - Sans serif* (recommended base).
-2. Copy the contents of [`miniflux-selfhst-dark.css`](miniflux-selfhst-dark.css) into **Settings → Custom CSS**.
+2. Copy the contents of [miniflux-selfhst-dark.css](miniflux-selfhst-dark.css) into **Settings → Custom CSS**.
 3. Save and reload.
 
 ## What it changes
