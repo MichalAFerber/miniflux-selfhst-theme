@@ -43,7 +43,26 @@ The simplest way is to use a font installed on the device you read Miniflux from
 
    `--entry-content-font-family` and `--entry-content-quote-font-family` already follow `--font-family`, so article text picks it up too. Devices without the font installed fall back to the next font in the list.
 
-Loading the font as a webfont (`@font-face`) only works if the font file is served from the **same origin** as Miniflux (for example a `/fonts/` path on the reverse proxy in front of it): Miniflux sends a `Content-Security-Policy` of `default-src 'self'`, which blocks fonts loaded from CDNs, Google Fonts, or `data:` URLs.
+### Loading it as a webfont instead
+
+Miniflux 2.2.2+ can load fonts from the web: in **Settings**, set **External font hosts** to a space-separated list of hostnames (no `https://`, no paths). Miniflux adds them to its Content-Security-Policy — `font-src` for the font files, plus `style-src` so stylesheet imports work. With the field empty, the CSP allows no font sources at all, which is why an `@font-face` in custom CSS silently does nothing by default.
+
+For a font that's on Google Fonts, allow `fonts.googleapis.com fonts.gstatic.com`, then import it on the **first line** of the custom CSS (`@import` must come before all other rules) and point `--font-family` at it:
+
+```css
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap");
+```
+
+Nerd Fonts themselves aren't on Google Fonts, so for one of those: upload the `.woff2` to any host you control (your Miniflux domain works too, but it still has to be listed — the default is to block everything), add that hostname to **External font hosts**, and declare the font anywhere in the custom CSS:
+
+```css
+@font-face {
+    font-family: "JetBrainsMono Nerd Font Mono";
+    src: url("https://files.example.com/fonts/JetBrainsMonoNerdFontMono-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+```
 
 Built against the Miniflux v2 stylesheets (`common.css` + `dark.css`) as of June 2026.
 
