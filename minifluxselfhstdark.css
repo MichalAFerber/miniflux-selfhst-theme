@@ -1,0 +1,303 @@
+/* ==========================================================================
+   Miniflux theme — "selfh.st dark"
+   For Miniflux v2 (https://github.com/miniflux/v2)
+
+   Bright letters on a near-black background with blue accents, modeled on
+   the look of selfh.st. Page gutters are fixed at 20px left/right.
+
+   How to use:
+   1. Miniflux → Settings → Theme: "Dark - Sans serif" (recommended base)
+   2. Paste the contents of this file into Settings → Custom CSS
+   ========================================================================== */
+
+:root {
+    color-scheme: dark;
+
+    --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --entry-content-font-family: var(--font-family);
+    --entry-content-quote-font-family: var(--font-family);
+    --entry-content-font-weight: 400;
+
+    /* Base */
+    --body-color: #f2f2f2;
+    --body-background: #0e0e0e;
+    --hr-border-color: #262626;
+    --title-color: #ffffff;
+
+    /* Links: bright by default, blue on hover/focus */
+    --link-color: #f2f2f2;
+    --link-focus-color: #60a5fa;
+    --link-hover-color: #60a5fa;
+    --link-visited-color: #a5b4fc;
+
+    /* Header / main menu */
+    --header-list-border-color: #1f1f1f;
+    --header-link-color: #d4d4d4;
+    --header-link-focus-color: #60a5fa;
+    --header-link-hover-color: #60a5fa;
+    --header-active-link-color: #ffffff;
+
+    --page-header-title-color: #ffffff;
+    --page-header-title-border-color: #1f1f1f;
+
+    --logo-color: #ffffff;
+    --logo-hover-color-span: #ffffff;
+
+    /* Tables */
+    --table-border-color: #262626;
+    --table-th-background: #161616;
+    --table-th-color: #9ca3af;
+    --table-tr-hover-background-color: #161616;
+    --table-tr-hover-color: #f2f2f2;
+
+    /* Buttons */
+    --button-primary-border-color: #3b82f6;
+    --button-primary-background: #3b82f6;
+    --button-primary-color: #ffffff;
+    --button-primary-focus-border-color: #2563eb;
+    --button-primary-focus-background: #2563eb;
+
+    /* Forms */
+    --input-border: 1px solid #2a2a2a;
+    --input-background: #1a1a1a;
+    --input-color: #f2f2f2;
+    --input-placeholder-color: #6b7280;
+    --input-focus-color: #ffffff;
+    --input-focus-border-color: rgba(59, 130, 246, 0.8);
+    --input-focus-box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+
+    /* Alerts */
+    --alert-color: #e5e5e5;
+    --alert-background-color: #161616;
+    --alert-border-color: #2a2a2a;
+    --alert-success-color: #86efac;
+    --alert-success-background-color: #0c1f13;
+    --alert-success-border-color: #14532d;
+    --alert-error-color: #fca5a5;
+    --alert-error-background-color: #251111;
+    --alert-error-border-color: #7f1d1d;
+    --alert-info-color: #93c5fd;
+    --alert-info-background-color: #0f1a2e;
+    --alert-info-border-color: #1e3a8a;
+
+    /* Panels and misc chrome */
+    --panel-background: #161616;
+    --panel-border-color: #262626;
+    --panel-color: #d4d4d4;
+    --keyboard-shortcuts-li-color: #9ca3af;
+    --counter-color: #9ca3af;
+
+    --pagination-link-color: #d4d4d4;
+    --pagination-border-color: #1f1f1f;
+
+    /* Category labels */
+    --category-color: #d4d4d4;
+    --category-background-color: #1a1a1a;
+    --category-border-color: #2a2a2a;
+    --category-link-color: #9ca3af;
+    --category-link-hover-color: #60a5fa;
+
+    /* Article list */
+    --item-border-color: #232323;
+    --item-padding: 12px 14px;
+    --item-title-link-font-weight: 600;
+    --item-status-read-title-link-color: #6b7280;
+    --item-status-read-title-focus-color: #60a5fa;
+    --item-meta-focus-color: #9ca3af;
+    --item-meta-li-color: #4b5563;
+    --current-item-border-width: 2px;
+    --current-item-border-color: #3b82f6;
+    --current-item-box-shadow: 0 0 8px rgba(59, 130, 246, 0.35);
+
+    /* Entry view */
+    --entry-header-border-color: #1f1f1f;
+    --entry-header-title-link-color: #ffffff;
+    --entry-content-color: #d4d4d4;
+    --entry-content-code-color: #f8fafc;
+    --entry-content-code-background: #1a1a1a;
+    --entry-content-code-border-color: #2e2e2e;
+    --entry-content-quote-color: #9ca3af;
+    --entry-content-abbr-border-color: #4b5563;
+    --entry-content-aside-border-color: #4b5563;
+    --entry-enclosure-border-color: #262626;
+
+    /* Feed/category state highlights */
+    --parsing-error-color: #fca5a5;
+    --feed-parsing-error-background-color: #251111;
+    --feed-parsing-error-border-style: solid;
+    --feed-parsing-error-border-color: #7f1d1d;
+    --feed-has-unread-background-color: #11192b;
+    --feed-has-unread-border-style: solid;
+    --feed-has-unread-border-color: #1e3a5f;
+    --category-has-unread-background-color: #11192b;
+    --category-has-unread-border-style: solid;
+    --category-has-unread-border-color: #1e3a5f;
+}
+
+/* Page gutters: 20px left/right */
+main,
+.header {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Drop the stock inner offsets so everything aligns on the 20px gutter */
+.page-header,
+.entry header {
+    padding-inline: 0;
+}
+
+.page-header h1 {
+    border-bottom-style: solid;
+}
+
+/* Logo: white wordmark with the blue dot, selfh.st style */
+.logo a span,
+.logo a:hover {
+    color: #3b82f6;
+}
+
+.logo a:hover span {
+    color: #60a5fa;
+}
+
+.header li :is(a, .logout-button):hover {
+    color: #60a5fa;
+}
+
+/* Article list: solid rounded cards instead of dotted outlines */
+.item {
+    background-color: #151515;
+    border-style: solid;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+/* Keep content from shifting when the current-item border grows to 2px */
+.item.current-item {
+    padding: 11px 13px;
+}
+
+.item-meta a,
+.item-meta-icons li :is(a, button) {
+    color: #9ca3af;
+}
+
+.item-meta :is(a:is(:focus, :hover), button:is(:focus, :hover)),
+.item-meta-icons li :is(a, button):is(:focus, :hover) {
+    color: #60a5fa;
+}
+
+/* Buttons: pill-shaped like the selfh.st "Subscribe" button */
+.button {
+    border-radius: 9999px;
+    padding: 5px 16px;
+}
+
+.button-danger {
+    border-color: #dc2626;
+    background: #dc2626;
+}
+
+.button-danger:hover,
+.button-danger:focus {
+    background: #b91c1c;
+}
+
+.button:disabled {
+    color: #525252;
+    background: #1a1a1a;
+    border-color: #2a2a2a;
+}
+
+/* Forms */
+input[type="search"],
+input[type="url"],
+input[type="password"],
+input[type="text"],
+input[type="number"],
+textarea {
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+fieldset {
+    border: 1px solid #262626;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.form-section {
+    border-left: 2px solid #262626;
+}
+
+.form-help {
+    color: #9ca3af;
+}
+
+/* Hover colors hardcoded for the light theme upstream */
+.page-header h1 a:hover,
+.page-header h1 a:focus,
+.entry header h1 a:hover,
+.entry header h1 a:focus {
+    color: #93c5fd;
+}
+
+.entry-meta,
+.entry-website a {
+    color: #9ca3af;
+}
+
+.entry-date {
+    color: #6b7280;
+}
+
+/* Blue accent for hyperlinks inside article content */
+.entry-content a {
+    color: #3b82f6;
+}
+
+.entry-content a:hover,
+.entry-content a:focus {
+    color: #60a5fa;
+}
+
+.entry-content figure img {
+    border-color: #262626;
+}
+
+.entry-content figcaption {
+    color: #9ca3af;
+}
+
+.entry-content dt {
+    color: #e5e5e5;
+}
+
+.entry-content dd {
+    color: #9ca3af;
+    border-left-color: #2e2e2e;
+}
+
+.entry-content blockquote {
+    border-left-color: #3b82f6;
+}
+
+.entry-content pre {
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.panel,
+.alert {
+    border-radius: 12px;
+}
+
+.bookmarklet {
+    border-color: #2e2e2e;
+}
+
+.confirm,
+.confirm button {
+    color: #f87171;
+}
