@@ -1,0 +1,36 @@
+name: ci
+
+# §4: the gate lives on the pull request. This repo deployed from main with
+# nothing checking a change first, so the deploy was the first thing to find out.
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Job name is the required-check context; the estate requires `ci`.
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: CSS must have balanced braces and parse
+        run: |
+          f=$(git ls-files '*.css' | head -1)
+          [ -n "$f" ] || { echo "::error::no CSS file found"; exit 1; }
+          python3 - "$f" <<'EOF'
+          import sys
+          css = open(sys.argv[1], encoding='utf-8').read()
+          if css.count('{') != css.count('}'):
+              print(f"::error file={sys.argv[1]}::unbalanced braces "
+                    f"({css.count('{')} open, {css.count('}')} close)"); sys.exit(1)
+          if not css.strip():
+              print(f"::error file={sys.argv[1]}::stylesheet is empty"); sys.exit(1)
+          print(f"{sys.argv[1]}: {css.count('{')} rules, braces balanced")
+          EOF
